@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+body{
+  margin: 0px;
+  padding: 0px;
+  font-family: Poppins;
+  background-color: lightblue;
+}
+.header{
+  background-color: rgb(212, 235, 253);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+} 
+.header>p{
+  color: #E74C3C;
+  font-size: 150%;
+  cursor: pointer;
+}
+.header>p>span{
+  color: #17A2B8;
+}
+.header>input{
+  background: none;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  outline: none;
+  padding: 12px;
+  font-size: 90%;
+  width: 25%;
+  
+}
+.header>div{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header>div>input{
+  background: none;
+  border: none;
+  border-radius: 20px 0px 0px 20px;
+  background-color: rgba(255, 111, 95, 0.76);
+  outline: none;
+  padding: 12px;
+  width: 80%;
+  font-size: 90%;
+  color: rgb(255, 255, 255);
+}
+.header>div>input::placeholder{
+  color: rgb(247, 245, 245);
+}
+.header>div{
+  display: flex;
+  align-items: center;
+}
+.header>div>button{
+  background:none;
+  border: none;
+  outline: none;
+  color: #17A2B8;
+  font-size: 30px;
+  cursor: pointer;
+}
+.body{
+  width: 60%;
+  margin: 8px auto;
+}
+.body>.noWork{
+  text-align:center;
+  color: #333233;
+}
+.body>div{
+  background-color: white;
+  border-left: 4px solid #17A2B8;
+  border-right: 4px solid #17A2B8;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px auto;
+  border-radius: 8px;
+}
+.body>div:nth-child(even){
+  border-left: 4px solid #E74C3C;
+  border-right: 4px solid #E74C3C;
+}
+.body>div>p{
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.7s;
+}
+.body>div>p:hover{
+  color: #333233;
+}
+@media only screen and (max-width: 600px) {
+  .body{
+    width: 90%;
+  }
+  .header{
+    text-align: center;
+  }
+  .header>p{
+    text-align: center;
+    width: 100%;
+    font-size: 140%;
+  }
+  .header>div{
+    width: 90%;
+    margin: 0px auto 5px;
+  }
+  .header>input{
+    width: 80%;
+    margin: 4px auto;
+    order: 0;
+  }
+}
