@@ -1,7 +1,8 @@
 import React from 'react';
 import { add_todo, } from '../store/action';
 import { connect } from 'react-redux';
-import { IoIosPaper, IoIosAddCircle, IoMdDoneAll,IoIosTrash } from 'react-icons/io';
+import { IoIosPaper, IoIosAddCircle, IoMdDoneAll,IoIosTrash , } from 'react-icons/io';
+import { FaPlus, FaArrowRight } from "react-icons/fa";
 import * as moment from 'moment';
 class Todo extends React.Component {
     constructor(props) {
@@ -16,23 +17,26 @@ class Todo extends React.Component {
     }
     addData() {
         const { task } = this.state;
-        if (this.props.todos) {
-            const postedTodos = this.props.todos;
-            const todoToAdd = {
-                name: task,
-                status: "notFulfilled",
-                postedTime: Date.now(),
-                id: postedTodos.length
+        if(task!==""){
+            if (this.props.todos) {
+                const postedTodos = this.props.todos;
+                const todoToAdd = {
+                    name: task,
+                    status: "notFulfilled",
+                    postedTime: Date.now(),
+                    id: postedTodos.length
+                }
+                postedTodos.push(todoToAdd)
+                this.props.set_todo(postedTodos)
+                this.setState({ todos: this.props.todos, task:'' })
+    
             }
-            postedTodos.push(todoToAdd)
-            this.props.set_todo(postedTodos)
-            this.setState({ todos: this.props.todos, task:'' })
-
+            else {
+                this.props.set_todo([{ name: task, status: "notFulfilled", postedTime: Date.now(), id:0 }]);
+                this.setState({ todos: this.props.todos, task:'' })
+            }
         }
-        else {
-            this.props.set_todo([{ name: task, status: "notFulfilled", postedTime: Date.now(), id:0 }]);
-            this.setState({ todos: this.props.todos, task:'' })
-        }
+  
     }
     removeTodo(v, i) {
         console.log(v)
@@ -82,17 +86,17 @@ class Todo extends React.Component {
             <div>
                 <div className={'header'}>
                     <p><span><IoIosPaper /></span> <span style={{color:"#333233"}}>to</span>dos</p>
-                    <div><input onChange={(e) => { this.setState({ task: e.target.value }) }} value={this.state.task} placeholder='enter todos' />
+                    <div><input onChange={(e) => { this.setState({ task: e.target.value }) }} value={this.state.task} placeholder='add todos' />
                     <button onClick={this.addData}><span title='Add Todo'><IoIosAddCircle /></span></button></div>
                     <input onChange={this.search.bind(this)} placeholder='search todos' />
                 </div>
                 <div className={'body'}>
                     {!this.props.todos && <p className={'noWork'}>Cheers! No Work.</p>}
                     {this.props.todos && text==="" && this.props.todos.map((v, i) => {
-                        return <div> <div>{v.status!=="fulfilled" ? <span>{v.name.toUpperCase()}</span>: <span style={{textDecoration:"line-through"}}>{v.name.toUpperCase()}</span>} <br /><small syle={{color:"color: rgba(255, 111, 95, 0.76);"}}>{moment().calendar(`${v.postedTime}`)}</small></div> {v.status !== "fulfilled" && <p onClick={() => { this.checkTodo(v, v.id) }} style={{color:"#17A2B8"}} title='Check Todo'><IoMdDoneAll /> </p>} <p style={{color:"#E74C3C"}} onClick={() => { this.removeTodo(v, v.id) }} title='Delete Todo'><IoIosTrash /></p></div>
+                        return <div> <div>{v.status!=="fulfilled" ? <span>{v.name.toUpperCase()}</span>: <span style={{textDecoration:"line-through"}}>{v.name.toUpperCase()}</span>} <br /><small syle={{color:"color: rgba(255, 111, 95, 0.76);"}}>{moment().calendar(`${v.postedTime}`)}</small></div> <div className={'listBtns'}> {v.status !== "fulfilled" && <p onClick={() => { this.checkTodo(v, v.id) }} style={{color:"#17A2B8"}} title='Check Todo'><IoMdDoneAll /> </p>} <p style={{color:"#E74C3C"}} onClick={() => { this.removeTodo(v, v.id) }} title='Delete Todo'><IoIosTrash /></p></div></div>
                     })}
                     {result!==[] && text!=="" && result.map((v, i) => {
-                        return <div> <div>{v.status!=="fulfilled" ? <span>{v.name.toUpperCase()}</span>: <span style={{textDecoration:"line-through"}}>{v.name.toUpperCase()}</span>} <br /><small syle={{color:"color: rgba(255, 111, 95, 0.76);"}}>{moment().calendar(`${v.postedTime}`)}</small></div> {v.status !== "fulfilled" && <p onClick={() => { this.checkTodo(v, v.id) }} style={{color:"#17A2B8"}} title='Check Todo'><IoMdDoneAll /> </p>} <p style={{color:"#E74C3C"}} onClick={() => { this.removeTodo(v, v.id) }} title='Delete Todo'><IoIosTrash /></p></div>
+                        return <div> <div>{v.status!=="fulfilled" ? <span>{v.name.toUpperCase()}</span>: <span style={{textDecoration:"line-through"}}>{v.name.toUpperCase()}</span>} <br /><small syle={{color:"color: rgba(255, 111, 95, 0.76);"}}>{moment().calendar(`${v.postedTime}`)}</small></div> <div className={'listBtns'}> {v.status !== "fulfilled" && <p onClick={() => { this.checkTodo(v, v.id) }} style={{color:"#17A2B8"}} title='Check Todo'><IoMdDoneAll /> </p>} <p style={{color:"#E74C3C"}} onClick={() => { this.removeTodo(v, v.id) }} title='Delete Todo'><IoIosTrash /></p></div></div>
                     })}
                 </div>
             </div>

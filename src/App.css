@@ -4,15 +4,16 @@ body{
   margin: 0px;
   padding: 0px;
   font-family: Poppins;
-  background-color: lightblue;
+  background-color: #F1F5F8;
 }
 .header{
-  background-color: rgb(212, 235, 253);
+  background-color: rgba(235, 246, 253, 0.918);
   display: flex;
   justify-content: space-between;
   padding: 10px;
   align-items: center;
   flex-wrap: wrap;
+  border-bottom: 2px solid rgba(255, 111, 95, 0.76)
 } 
 .header>p{
   color: #E74C3C;
@@ -58,16 +59,22 @@ body{
   align-items: center;
 }
 .header>div>button{
+  padding: 6px;
+  padding-top: 9px;
+  text-align: center;
   background:none;
   border: none;
   outline: none;
   color: #17A2B8;
-  font-size: 30px;
+  font-size: 20px;
   cursor: pointer;
+  background-color: #17A2B8;
+  border-radius: 0px 20px 20px 0px;
+  color: #F1F5F8;
 }
 .body{
   width: 60%;
-  margin: 8px auto;
+  margin: 14px auto;
 }
 .body>.noWork{
   text-align:center;
@@ -83,18 +90,22 @@ body{
   justify-content: space-between;
   margin: 8px auto;
   border-radius: 8px;
+  background-color: rgba(235, 246, 253, 0.918);
+
 }
 .body>div:nth-child(even){
   border-left: 4px solid #E74C3C;
   border-right: 4px solid #E74C3C;
 }
-.body>div>p{
+.listBtns{
+  display: flex;
+  justify-content: space-between;
+}
+.listBtns>p{
+  margin-left: 10px;
   cursor: pointer;
   font-size: 20px;
   transition: 0.7s;
-}
-.body>div>p:hover{
-  color: #333233;
 }
 @media only screen and (max-width: 600px) {
   .body{
