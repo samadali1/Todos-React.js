@@ -39,7 +39,6 @@ class Todo extends React.Component {
   
     }
     removeTodo(v, i) {
-        console.log(v)
         const postedTodos = this.props.todos;
         for(var z =0; z<postedTodos.length; z++){
             if(postedTodos[z].name==v.name&&postedTodos[z].postedTime === v.postedTime){

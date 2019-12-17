@@ -7,7 +7,7 @@ body{
   background-color: #F1F5F8;
 }
 .header{
-  background-color: rgba(235, 246, 253, 0.918);
+  background-color: rgba(217, 235, 247, 0.918);
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -90,7 +90,7 @@ body{
   justify-content: space-between;
   margin: 8px auto;
   border-radius: 8px;
-  background-color: rgba(235, 246, 253, 0.918);
+  /* background-color: rgba(235, 246, 253, 0.918); */
 
 }
 .body>div:nth-child(even){
